@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Join = () => {
+export const Join = ({ className }) => {
   return (
     <div>
       <img className="w-15 h-15" src="MainLogo.svg" />

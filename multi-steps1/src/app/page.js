@@ -1,6 +1,5 @@
 "use client";
 import {
-  ContinueBtn,
   Forms,
   Join,
   LastPage,
@@ -20,8 +19,8 @@ export default function Home() {
         <div className="w-[480px] h-fit bg-white p-[32px] rounded-[8px]">
           <Join></Join>
 
-          <Forms></Forms>
-          <ContinueBtn setStep={setStep}></ContinueBtn>
+          <Forms setStep={setStep}></Forms>
+          {/* <ContinueBtn setStep={setStep}></ContinueBtn> */}
         </div>
       </div>
     );
@@ -33,8 +32,8 @@ export default function Home() {
         <div className="w-[480px] h-fit bg-white p-[32px] rounded-[8px]">
           <Join></Join>
 
-          <Secondforms></Secondforms>
-          <SecondBtns setStep={setStep}></SecondBtns>
+          <Secondforms setStep={setStep}></Secondforms>
+          {/* <SecondBtns setStep={setStep}></SecondBtns> */}
 
           {/* <ContinueBtn setStep={setStep}></ContinueBtn> */}
         </div>
@@ -47,8 +46,8 @@ export default function Home() {
         <div className="w-[480px] h-fit bg-white p-[32px] rounded-[8px]">
           <Join></Join>
 
-          <ThirdForms></ThirdForms>
-          <ThirdBtns setStep={setStep}></ThirdBtns>
+          <ThirdForms setStep={setStep}></ThirdForms>
+          {/* <ThirdBtns onClickNext={() => setStep("third")}></ThirdBtns> */}
 
           {/* <ContinueBtn setStep={setStep}></ContinueBtn> */}
         </div>

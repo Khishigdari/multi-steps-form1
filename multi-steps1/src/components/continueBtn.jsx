@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
 
-export const ContinueBtn = ({ setStep }) => {
+export const ContinueBtn = ({ gotoNext }) => {
   return (
     <button
-      onClick={() => setStep("second")}
+      onClick={gotoNext}
       className="bg-[#121316] w-[416px] rounded-[6px] px-3 py-[10px] text-white mt-[162px] flex justify-center gap-1 cursor-pointer"
     >
       Continue 1/3
