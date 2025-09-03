@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { ContinueBtn } from "@/components";
+// import { motion } from "motion/react";
 
-export const Forms = ({ setStep }) => {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-  });
+export const Forms = ({ setStep, form, setForm }) => {
+  // const [form, setForm] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   username: "",
+  // });
 
   const [errors, setErrors] = useState({});
 
@@ -53,7 +54,11 @@ export const Forms = ({ setStep }) => {
   //   };
 
   return (
-    <div>
+    <div
+      className="relative"
+      // initial={{ opacity: 0, right: -30 }}
+      // animate={{ opacity: 1, right: 0 }}
+    >
       <div>
         <p className="font-semibold text-[14px] text-[#334155] mb-2">
           {/* <p style={pCommonstyles}> */}

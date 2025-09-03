@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { SecondBtns } from "@/components";
+// import { motion } from "motion/react";
 
-export const Secondforms = ({ setStep }) => {
-  const [form, setForm] = useState({
-    email: "",
-    phone: "",
-    password: "",
-    confirm: "",
-  });
+export const Secondforms = ({ setStep, form, setForm }) => {
+  // const [form, setForm] = useState({
+  //   email: "",
+  //   phone: "",
+  //   password: "",
+  //   confirm: "",
+  // });
 
   console.log(form);
 
@@ -74,7 +75,11 @@ export const Secondforms = ({ setStep }) => {
   console.log(errors);
 
   return (
-    <div>
+    <div
+      className="relative"
+      // initial={{ opacity: 0, right: -30 }}
+      // animate={{ opacity: 1, right: 0 }}
+    >
       <div>
         <p className="font-semibold text-[14px] text-[#334155] mb-2">
           Email <span className="text-[#E14942]">*</span>

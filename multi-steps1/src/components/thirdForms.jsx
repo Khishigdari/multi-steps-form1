@@ -3,26 +3,37 @@ import React from "react";
 import { ThirdBtns } from "@/components";
 import { useState } from "react";
 
-export const ThirdForms = (setStep) => {
-  const [form, setForm] = useState({
-    date: "",
-  });
+export const ThirdForms = ({ setStep, form, setForm }) => {
+  console.log(form);
 
   const [errors, setErrors] = useState({});
+  const [preview, setPreview] = useState();
+
+  function handleImageChange(e) {
+    const file = e.target.files[0];
+    const filePreview = URL.createObjectURL(file);
+    setPreview(filePreview);
+  }
 
   function gotoNext() {
     const newErrors = {};
 
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    const imageRegex = /\.(jpg|jpeg|png)$/i;
 
     if (dateRegex.test(form.date)) {
       newErrors.date = null;
     } else {
       newErrors.date = "Please select a date.";
     }
+    if (imageRegex.test(form.image)) {
+      newErrors.image = null;
+    } else {
+      newErrors.image = "Image cannot be blank.";
+    }
     setErrors(newErrors);
 
-    if (!newErrors.date) {
+    if (!newErrors.date && !newErrors.image) {
       setStep("fourth");
     }
   }
@@ -35,7 +46,7 @@ export const ThirdForms = (setStep) => {
 
   // console.log(form);
   return (
-    <div>
+    <div className="relative">
       <p className="font-semibold text-[14px] text-[#334155] mb-2">
         Date of birth <span className="text-[#E14942]">*</span>
       </p>
@@ -47,6 +58,7 @@ export const ThirdForms = (setStep) => {
         }
         type="date"
         onChange={(e) => setForm({ ...form, date: e.target.value })}
+        max="2012-12-31"
       />
       {errors.date && (
         <div className="text-[#E14942] text-[14px] mb-3">{errors.date}</div>
@@ -54,11 +66,42 @@ export const ThirdForms = (setStep) => {
       <p className="font-semibold text-[14px] text-[#334155] ">
         Profile image <span className="text-[#E14942]">*</span>
       </p>
-      <input
-        className="w-[416px] p-3  rounded-md  mt-[12px] bg-[rgba(127, 127, 128, 0.05)] h-[180px] bg-[#7F7F800D]"
-        type="image"
-        alt="Add image"
+      {/* <input
+        className="w-[416px] p-3  rounded-md  mt-[12px] bg-[rgba(127, 127, 128, 0.05)] h-[180px] bg-[#7F7F800D] mb-[12px]"
+        type="file"
+        accept="image/png, image/jpg, image/jpeg"
+        // alt="Add image"
+        name="Add Image"
+        // value={form.image}
+        onChange={(e) => setForm({ ...form, image: e.target.value })}
       />
+      {errors.image && (
+        <div className="text-[#E14942] text-[14px] mb-3">{errors.image}</div>
+      )} */}
+
+      <div className="w-[416px] p-3  rounded-md  mt-[12px] bg-[rgba(127, 127, 128, 0.05)] h-[180px] bg-[#7F7F800D] mb-[12px] flex flex-col gap-2 items-center justify-center relative">
+        <img src="./addImage.svg" />
+        Add image
+        {preview && (
+          <img
+            src={preview}
+            className="absolute inset-0 h-full w-full object-cover rounded-md"
+          />
+        )}
+        <input
+          type="file"
+          // accept="image/png, image/jpg, image/jpeg"
+          className=" absolute opacity-0 inset-0"
+          onChange={(e) => {
+            handleImageChange(e);
+            setForm({ ...form, image: e.target.files[0].name });
+          }}
+        />
+      </div>
+      {errors.image && (
+        <div className="text-[#E14942] text-[14px] mb-3">{errors.image}</div>
+      )}
+
       <ThirdBtns gotoNext={gotoNext} goBack={goBack}></ThirdBtns>
     </div>
   );
