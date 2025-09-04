@@ -53,6 +53,7 @@ export const ThirdForms = ({ setStep, form, setForm }) => {
         Date of birth <span className="text-[#E14942]">*</span>
       </p>
       <input
+        value={form.date}
         className={
           !errors.date
             ? "w-[416px] p-3 border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-none focus:ring-2 focus:ring-[#0CA5E9] mb-[12px]"
