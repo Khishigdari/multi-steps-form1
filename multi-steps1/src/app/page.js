@@ -5,17 +5,27 @@ import { motion } from "motion/react";
 
 export default function Home() {
   const [step, setStep] = useState("first");
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
-    phone: "",
-    password: "",
-    confirm: "",
-    date: "",
-    image: "",
-  });
+
+  const localForm =
+    typeof window !== "undefined" ? localStorage.getItem("my-form") : null;
+
+  console.log(localForm);
+
+  const [form, setForm] = useState(
+    localForm
+      ? JSON.parse(localForm)
+      : {
+          firstName: "",
+          lastName: "",
+          username: "",
+          email: "",
+          phone: "",
+          password: "",
+          confirm: "",
+          date: "",
+          image: "",
+        }
+  );
 
   if (step === "first") {
     return (

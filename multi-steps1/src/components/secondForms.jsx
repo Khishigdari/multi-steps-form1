@@ -65,6 +65,8 @@ export const Secondforms = ({ setStep, form, setForm }) => {
       !newErrors.password &&
       !newErrors.confirm
     ) {
+      localStorage.setItem("my-form", JSON.stringify(form));
+
       setStep("third");
     }
   }

@@ -34,6 +34,8 @@ export const ThirdForms = ({ setStep, form, setForm }) => {
     setErrors(newErrors);
 
     if (!newErrors.date && !newErrors.image) {
+      localStorage.setItem("my-form", JSON.stringify(form));
+
       setStep("fourth");
     }
   }

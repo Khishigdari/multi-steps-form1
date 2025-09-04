@@ -11,6 +11,8 @@ export const Forms = ({ setStep, form, setForm }) => {
 
   const [errors, setErrors] = useState({});
 
+  // const myForm = localStorage.getItem("myForm");
+
   function gotoNext() {
     const newErrors = {};
 
@@ -41,6 +43,7 @@ export const Forms = ({ setStep, form, setForm }) => {
     setErrors(newErrors);
 
     if (!newErrors.firstName && !newErrors.lastName && !newErrors.username) {
+      localStorage.setItem("my-form", JSON.stringify(form));
       setStep("second");
     }
   }
